@@ -8,7 +8,9 @@ c/c++で処理時間を計測します
 
 ```c++
 #include "ptimer.hpp"
-long ptimer::ptimer(std::function<void()> func);
+long t = ptimer::ptimer([] {
+  // 処理
+});
 ```
 funcの実行時間をナノ秒で返します
 
