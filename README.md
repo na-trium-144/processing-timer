@@ -6,27 +6,37 @@ c/c++で処理時間を計測します
 
 ## C++11
 
+例
 ```c++
 #include "ptimer.hpp"
-long t = ptimer::ptimer([] {
-  // 処理
-});
+#include <iostream>
+int main() {
+  auto t = ptimer::ptimer([] {
+    for (int i = 0; i < 10000; i++)
+      ;
+  });
+  std::cout << t << " ns" << std::endl;
+}
 ```
-funcの実行時間をナノ秒で返します
-
-例→example.cpp
+実行時間(ナノ秒単位)がptimer::ptimerの戻り値になります
 
 ## C
 
+例
 ```c
 #include "ptimer.h"
-ptimer(t, ({
-  // 処理
-}));
+#include <stdio.h>
+int main() {
+  long t;
+  ptimer(t, ({
+    for (int i = 0; i < 10000; i++)
+      ;
+  }));
+  printf("%ld ns\n", t);
+}
 ```
 defineマクロです
 動けばヨシ!
 
-実行時間が変数tにナノ秒単位で入ります
+実行時間(ナノ秒単位)が変数tに入ります
 
-例→example.c
